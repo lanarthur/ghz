@@ -1,8 +1,6 @@
 package runner
 
 import (
-	"os"
-	"os/signal"
 	"runtime"
 	"time"
 )
