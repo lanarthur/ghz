@@ -33,15 +33,6 @@ func Run(call, host string, options ...Option) (*Report, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	cancel := make(chan os.Signal, 1)
-	defer close(cancel)
-	signal.Notify(cancel, os.Interrupt)
-	go func() {
-		<-cancel
-		reqr.Stop(ReasonCancel)
-	}()
-
 	if c.z > 0 {
 		go func() {
 			time.Sleep(c.z)
